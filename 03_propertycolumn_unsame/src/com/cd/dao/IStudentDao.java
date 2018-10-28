@@ -1,0 +1,17 @@
+package com.cd.dao;
+
+import com.cd.beans.Student;
+
+import java.util.List;
+import java.util.Map;
+
+public interface IStudentDao {
+    void insertStudent(Student student);
+    void insertStudentCacheId(Student student);
+    
+    List<Student> selectAllStudents();
+
+    Student selectStudentById(int id);
+    List<Student> selectStudentsByName(String name);
+
+}    

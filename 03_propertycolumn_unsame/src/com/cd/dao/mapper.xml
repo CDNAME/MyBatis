@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+    <insert id="insertStudent">
+        insert into student(tname, tage, score) values(#{name},#{age},#{score})
+    </insert>
+    
+    <insert id="insertStudentCacheId">
+        insert into student(tname, tage, score) values(#{name},#{age},#{score})
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            <!--或者写成select last_insert_id()-->
+            select @@identity
+        </selectKey>
+    </insert>
+    
+    <!-- 当数据库的字段名和属性名称不一致时，需要用到resultMap -->
+    <resultMap id="studentMapper" type="Student">
+        <id column="tid" property="id"/>
+        <result column="tage" property="age"/>
+        <result column="tname" property="name"/>
+    </resultMap>
+
+    <!-- 当数据库的字段名和属性名称不一致时，通过别名解决的方式 -->
+    <select id="selectAllStudents" resultType="Student">
+        select tid id,tname name,tage age,score from student
+    </select>
+
+    <!-- 当数据库的字段名和属性名称不一致时，通过resultMap的解决方式 -->
+    <select id="selectStudentById" resultMap="studentMapper">
+        select tid,tname,tage,score from student where tid=#{id}
+    </select>
+
+    <select id="selectStudentsByName" resultMap="studentMapper">
+        select tid,tname,tage,score from student where tname like '%' #{name} '%'
+    </select>
+    </mapper>

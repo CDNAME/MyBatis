@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--注册DB连接四要素属性文件-->
+    <properties resource="jdbc_mysql.properties"/>
+    <!--<properties resource="jdbc_oracle.properties"/>-->
+    <!--定义类型别名-->
+    <typeAliases>
+        <!--<typeAlias type="com.cd.beans.Student" alias="Student"/>-->
+        <!--将指定包中所有类的简单类名当做其别名-->
+        <package name="com.cd.beans"/>
+    </typeAliases>
+    <!--配置运行环境-->
+    <environments default="mysqlEM">
+        <environment id="mysqlEM">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <!--也可以写成jdbc:mysql:///test或者jdbc:mysql://127.0.0.1:3306/test-->
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.user}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+        <!--<environment id="onlineEM">-->
+            <!--<transactionManager type="JDBC"/>-->
+            <!--<dataSource type="POOLED">-->
+                <!--<property name="driver" value="com.mysql.jdbc.Driver"/>-->
+                <!--&lt;!&ndash;也可以写成jdbc:mysql:///test或者jdbc:mysql://127.0.0.1:3306/test&ndash;&gt;-->
+                <!--<property name="url" value="jdbc:mysql://127.0.0.1:3306/test"/>-->
+                <!--<property name="username" value="root"/>-->
+                <!--<property name="password" value="123456"/>-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    </environments>
+    <!--注册映射文件-->
+    <mappers>
+        <mapper resource="com/cd/dao/mapper.xml"/>
+        <mapper resource="com/cd/dao/mapper2.xml"/>
+    </mappers>
+</configuration>

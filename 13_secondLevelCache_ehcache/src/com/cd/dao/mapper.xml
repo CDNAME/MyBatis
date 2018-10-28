@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cd.dao.IStudentDao">
+    
+    <!--
+        使用ehcache二级缓存步骤
+        1）导入两个包ehcache-core-2.6.8.jar和mybatis-ehcache-1.0.3.jar
+        2）设置cache的type如下
+        3）导入ehcache.xml问价
+    -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache">
+        <property name="timeToIdleSeconds" value="60"/>
+    </cache>
+            
+    
+    <insert id="insertStudent" flushCache="false">
+        insert into student(name,age,score) values(#{name},#{age},#{score})
+    </insert>
+    
+    <!--useCache="false"对当前的sql的二级缓存局部关闭-->
+    <select id="selectStudentById" useCache="false" resultType="Student">
+        select id,name,age,score from student where id=#{id}
+    </select>
+
+    <select id="selectStudentById2" resultType="Student">
+        select id,name,age,score from student where id=#{id}
+    </select>
+</mapper>

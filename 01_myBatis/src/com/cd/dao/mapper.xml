@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper的属性namespace的值是为了log4j的日志打印功能-->
+<mapper namespace="test">
+    <!--parameterType属性也可以省略不写-->
+    <insert id="insertStudent" parameterType="Student">
+        insert into student(name, age, score) values(#{name},#{age},#{score})
+    </insert>
+</mapper>

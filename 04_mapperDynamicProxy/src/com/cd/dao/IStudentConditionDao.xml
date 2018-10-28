@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cd.dao.IStudentConditionDao">
+
+    <select id="selectStudentsByCondition" resultType="Student">
+        select id,name,age,score 
+        from student 
+        where name like '%' #{arg0} '%' 
+        and age > #{arg1}
+    </select>
+    <!--
+        #{ }里面可以放什么内容？
+        1）参数对象的属性
+        2）随意内容，此时#{}表示占位符
+        3）参数为map时的key
+        4)参数为map时，若key所对应的value为对象，则可以将对象的属性放入
+        5)参数的索引号，低版本可以直接使用0，1，高版本需使用arg0,arg1
+    -->
+    <select id="selectStudentsByIf" resultType="Student">
+        select id,name,age,score
+        from student
+        where 1 = 1
+        <if test="name != null and name != ''">
+            and name like '%' #{name} '%'
+        </if>
+        <if test="age > 0">
+            and age > #{age}
+        </if>
+    </select>
+
+    <select id="selectStudentsByWhere" resultType="Student">
+        select id,name,age,score
+        from student
+        <where>
+            <!-- 
+                where标签可以只能识别去除sql语句中的and，但是不能自己加上and，
+                所以在写sql的拼接时一般都加上and
+            -->
+            <if test="name != null and name != ''">
+                and name like '%' #{name} '%'
+            </if>
+            <if test="age > 0">
+                and age > #{age}
+            </if>
+        </where>
+    </select>
+    
+    <select id="selectStudentsByChoose" resultType="Student">
+        select id,name,age,score
+        from student
+        <where>
+            <choose>
+                <when test="name != null and name != ''">
+                    and name like '%' #{name} '%'
+                </when>
+                <when test="age > 0">
+                    and age > #{age}
+                </when>
+                <otherwise>
+                    1 = 2
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <select id="selectStudentsByForeach" resultType="Student">
+        <!-- select id,name,age,score from student where id in (1,3) -->
+        select id,name,age,score
+        from student
+        <if test="array.length > 0">
+            where id in 
+            <foreach collection="array" item="myid" open="(" close=")" separator=",">
+                #{myid}
+            </foreach> 
+        </if>
+    </select>
+    
+    <select id="selectStudentsByForeachList" resultType="Student">
+        select id,name,age,score
+        from student
+        <if test="list.size > 0">
+            where id in
+            <foreach collection="list" item="myid" open="(" close=")" separator=",">
+                #{myid}
+            </foreach>
+        </if>
+    </select>
+    
+    <select id="selectStudentsByForeachGenerics" resultType="Student">
+        select id,name,age,score
+        from student
+        <if test="list.size > 0">
+            where id in
+            <foreach collection="list" item="stu" open="(" close=")" separator=",">
+                #{stu.id}
+            </foreach>
+        </if>
+    </select>
+    
+    <select id="selectStudentsBySqlFragment" resultType="Student">
+        select <include refid="selectColumns"/>
+        from student
+        <if test="list.size > 0">
+            where id in
+            <foreach collection="list" item="stu" open="(" close=")" separator=",">
+                #{stu.id}
+            </foreach>
+        </if>
+    </select>
+    
+    <sql id="selectColumns">
+        id,name,age,score
+    </sql>
+</mapper>

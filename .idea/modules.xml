@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01_myBatis/01_myBatis.iml" filepath="$PROJECT_DIR$/01_myBatis/01_myBatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_myBatis/02_myBatis.iml" filepath="$PROJECT_DIR$/02_myBatis/02_myBatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03_propertycolumn_unsame/03_propertycolumn_unsame.iml" filepath="$PROJECT_DIR$/03_propertycolumn_unsame/03_propertycolumn_unsame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_mapperDynamicProxy/04_mapperDynamicProxy.iml" filepath="$PROJECT_DIR$/04_mapperDynamicProxy/04_mapperDynamicProxy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05_one2many/05_one2many.iml" filepath="$PROJECT_DIR$/05_one2many/05_one2many.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_many2one/06_many2one.iml" filepath="$PROJECT_DIR$/06_many2one/06_many2one.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_oneself_one2many/07_oneself_one2many.iml" filepath="$PROJECT_DIR$/07_oneself_one2many/07_oneself_one2many.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08_oneself_many2one/08_oneself_many2one.iml" filepath="$PROJECT_DIR$/08_oneself_many2one/08_oneself_many2one.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09_many2many/09_many2many.iml" filepath="$PROJECT_DIR$/09_many2many/09_many2many.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10_lazyLoad/10_lazyLoad.iml" filepath="$PROJECT_DIR$/10_lazyLoad/10_lazyLoad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/11_sqlSessionCache/11_sqlSessionCache.iml" filepath="$PROJECT_DIR$/11_sqlSessionCache/11_sqlSessionCache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/12_secondLevelCache_buildin/12_secondLevelCache_buildin.iml" filepath="$PROJECT_DIR$/12_secondLevelCache_buildin/12_secondLevelCache_buildin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/13_secondLevelCache_ehcache/13_secondLevelCache_ehcache.iml" filepath="$PROJECT_DIR$/13_secondLevelCache_ehcache/13_secondLevelCache_ehcache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14_annotation/14_annotation.iml" filepath="$PROJECT_DIR$/14_annotation/14_annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyBatis.iml" filepath="$PROJECT_DIR$/MyBatis.iml" />
+    </modules>
+  </component>
+</project>

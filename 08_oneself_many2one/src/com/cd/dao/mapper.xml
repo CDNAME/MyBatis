@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cd.dao.INewsLableDao">
+    
+    <resultMap type="NewsLable" id="newsLableMapper">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association property="parent" 
+                     javaType="NewsLable"
+                     select="selectNewsLableById"
+                     column="pid"/>
+    </resultMap>
+    
+    <select id="selectNewsLableById" resultMap="newsLableMapper">
+        select id,name,pid from newslable where id=#{id}
+    </select>
+    
+</mapper>

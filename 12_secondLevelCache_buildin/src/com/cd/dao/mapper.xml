@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cd.dao.IStudentDao">
+    <cache/>
+    <!--<cache eviction="FIFO" flushInterval="10800000"-->
+            <!--readOnly="true" size="512"/>-->
+
+    <!--flushCache设为false，表示插入该操作不会对二级缓存造成影响-->
+    <insert id="insertStudent" flushCache="false">
+        insert into student(name,age,score) values(#{name},#{age},#{score})
+    </insert>
+    
+    <!--useCache="false"对当前的sql的二级缓存局部关闭-->
+    <select id="selectStudentById" useCache="true" resultType="Student">
+        select id,name,age,score from student where id=#{id}
+    </select>
+
+    <select id="selectStudentById2" resultType="Student">
+        select id,name,age,score from student where id=#{id}
+    </select>
+</mapper>
